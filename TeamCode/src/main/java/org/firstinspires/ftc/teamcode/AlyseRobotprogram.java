@@ -93,7 +93,12 @@ public class AlyseRobotprogram extends LinearOpMode {
     else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
       turn(gamepad2.right_stick_x * speed_control);
 
-      // No stick input
+    //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
+    //  diagonalRight(gamepad2.right_stick_x * speed_control);
+    //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
+    //  diagonalLeft(gamepad2.right_stick_x * speed_control);
+
+     // No stick input
     else
       brake();
   }
@@ -117,6 +122,8 @@ public class AlyseRobotprogram extends LinearOpMode {
       duckSpinLeft.setPower(0);
     }
   }
+
+  //trigger to spin servos that grab block or eject block
   private void checkTriggersG1() {
       if (gamepad1.left_trigger >= deadZone)
           itemPickup(gamepad1.left_trigger);
@@ -125,6 +132,14 @@ public class AlyseRobotprogram extends LinearOpMode {
       else
           itemPickup(0);
   }
+
+  //Left Joystick to raise or lower block
+  private void checkJoysticksG1() {
+      if (gamepad1.left_stick_y >= deadZone)
+          blockLift(gamepad1.left_stick_y);
+      else
+          blockLift(0);
+}
 
   private void brake() {
     frontLeft.setPower(0);
@@ -140,6 +155,7 @@ public class AlyseRobotprogram extends LinearOpMode {
     backRight.setPower(-power);
   }
 
+  //strafe the robot
   private void strafe(double power) {
     frontLeft.setPower(power);
     backLeft.setPower(-power);
@@ -147,6 +163,23 @@ public class AlyseRobotprogram extends LinearOpMode {
     backRight.setPower(power);
   }
 
+  //drive robot diagonaly Right
+  private void diagonalRight(double power) {
+    //frontLeft.setPower(power);
+    backLeft.setPower(-power);
+    frontRight.setPower(-power);
+    //backRight.setPower(power);
+  }
+
+  //drive robot diagonaly left
+  private void diagonalLeft(double power) {
+    frontLeft.setPower(power);
+    //backLeft.setPower(-power);
+    //frontRight.setPower(-power);
+    backRight.setPower(power);
+  }
+
+  //drive robot forward or backwards
   private void drive(double power) {
     frontLeft.setPower(-power);
     backLeft.setPower(-power);
@@ -158,6 +191,11 @@ public class AlyseRobotprogram extends LinearOpMode {
   private void itemPickup(double power) {
       pickupRight.setPower(-power);
       pickupLeft.setPower(power);
+  }
+
+  // block lift mechanism
+  private void blockLift(double power) {
+      liftey.setPower(power);
   }
 }
   
