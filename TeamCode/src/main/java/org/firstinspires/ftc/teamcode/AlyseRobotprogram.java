@@ -138,11 +138,10 @@ public class AlyseRobotprogram extends LinearOpMode {
 
   //Left Joystick to raise or lower block
   private void checkJoysticksG1() {
-      if (gamepad1.left_stick_y <= deadZone)
+      if (gamepad1.left_stick_y >= deadZone)
           liftey.setPower(1);
-      else if (gamepad1.left_stick_y >= deadZone)
+      else if (gamepad1.left_stick_y <= -1*deadZone)
           liftey.setPower(-1);
-      
       else
           liftey.setPower(0);}
 
