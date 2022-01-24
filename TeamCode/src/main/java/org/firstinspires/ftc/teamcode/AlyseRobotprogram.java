@@ -163,7 +163,8 @@ public class AlyseRobotprogram extends LinearOpMode {
     backRight.setPower(power);
   }
 
-  //drive robot diagonaly Right
+  // New comment for Alyse
+  //drive robot diagonally Right
   private void diagonalRight(double power) {
     //frontLeft.setPower(power);
     backLeft.setPower(-power);
@@ -171,7 +172,7 @@ public class AlyseRobotprogram extends LinearOpMode {
     //backRight.setPower(power);
   }
 
-  //drive robot diagonaly left
+  //drive robot diagonally left
   private void diagonalLeft(double power) {
     frontLeft.setPower(power);
     //backLeft.setPower(-power);
