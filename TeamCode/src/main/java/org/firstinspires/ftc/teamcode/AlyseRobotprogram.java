@@ -59,9 +59,12 @@ public class AlyseRobotprogram extends LinearOpMode {
 
         // controller 2 functions
         checkJoysticksG2();        // check joysticks for drive train
+          checkJoysticksG1();        // check joysticks for drive train
+
 
         telemetry.addData("Left Pow", frontLeft.getPower());
         telemetry.addData("Right Pow", frontRight.getPower());
+        telemetry.addData("lift Pow", gamepad1.left_stick_y);
         telemetry.update();
       }
     }
@@ -126,20 +129,22 @@ public class AlyseRobotprogram extends LinearOpMode {
   //trigger to spin servos that grab block or eject block
   private void checkTriggersG1() {
       if (gamepad1.left_trigger >= deadZone)
-          itemPickup(gamepad1.left_trigger);
-      else if (gamepad1.right_trigger >= deadZone)
-          itemPickup(-gamepad1.right_trigger);
+          itemPickup(1);
+      else if (gamepad1.right_trigger  >= deadZone)
+          itemPickup(-1);
       else
           itemPickup(0);
   }
 
   //Left Joystick to raise or lower block
   private void checkJoysticksG1() {
-      if (gamepad1.left_stick_y >= deadZone)
-          blockLift(gamepad1.left_stick_y);
+      if (gamepad1.left_stick_y <= deadZone)
+          liftey.setPower(1);
+      else if (gamepad1.left_stick_y >= deadZone)
+          liftey.setPower(-1);
+      
       else
-          blockLift(0);
-}
+          liftey.setPower(0);}
 
   private void brake() {
     frontLeft.setPower(0);
