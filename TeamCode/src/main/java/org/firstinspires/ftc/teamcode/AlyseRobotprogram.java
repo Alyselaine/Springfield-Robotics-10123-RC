@@ -117,8 +117,6 @@ public class AlyseRobotprogram extends LinearOpMode {
       duckSpinLeft.setPower(0);
     }
   }
-
-  // changes
   private void checkTriggersG1() {
       if (gamepad1.left_trigger >= deadZone)
           itemPickup(gamepad1.left_trigger);
