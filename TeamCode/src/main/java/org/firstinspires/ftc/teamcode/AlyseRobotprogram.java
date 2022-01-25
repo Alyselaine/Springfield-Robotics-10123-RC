@@ -84,17 +84,33 @@ public class AlyseRobotprogram extends LinearOpMode {
   }
 
   private void checkJoysticksG2() {
+  // Strafing code from GM 0
+    if (Math.abs(gamepad2.left_stick_x) >= deadZone)||(Math.abs(gamepad2.left_stick_y) >= deadZone)||(Math.abs(gamepad2.right_stick_x) >= deadZone)
+    double diagonalFactor = 1.0
+    double denominator = Math.max(Math.abs(gamepad2.left_stick_y) + Math.abs(gamepad2.left_stick_x) + Math.abs(gamepad2.right_stick_x), 1);
+    double frontLeftPower = (gamepad2.left_stick_y + gamepad2.left_stick_x * diagonalFactor+ gamepad2.right_stick_x) / denominator;
+    double backLeftPower = (gamepad2.left_stick_y - gamepad2.left_stick_x * diagonalFactor + gamepad2.right_stick_x) / denominator;
+    double frontRightPower = (gamepad2.left_stick_y - gamepad2.left_stick_x * diagonalFactor - gamepad2.right_stick_x) / denominator;
+    double backRightPower = (gamepad2.left_stick_y + gamepad2.left_stick_x * diagonalFactor - gamepad2.right_stick_x) / denominator;
+
+
+      frontLeft.setPower(frontLeftPower);
+      backLeft.setPower(backLeftPower);
+      frontRight.setPower(-frontRightPower);
+      backRight.setPower(-backRightPower);
+
+
     // drive based left stick y-axis
-    if (Math.abs(gamepad2.left_stick_y) >= deadZone)
-      drive(gamepad2.left_stick_y * speed_control);
+    //if (Math.abs(gamepad2.left_stick_y) >= deadZone)
+    //  drive(gamepad2.left_stick_y * speed_control);
 
       // strafe based on left stick x-axis
-    else if (Math.abs(gamepad2.left_stick_x) >= deadZone)
-      strafe(gamepad2.left_stick_x * speed_control);
+    //else if (Math.abs(gamepad2.left_stick_x) >= deadZone)
+    //  strafe(gamepad2.left_stick_x * speed_control);
 
       // turn based on right stick x-axis
-    else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
-      turn(gamepad2.right_stick_x * speed_control);
+    //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
+    //  turn(gamepad2.right_stick_x * speed_control);
 
     //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
     //  diagonalRight(gamepad2.right_stick_x * speed_control);
@@ -200,7 +216,8 @@ public class AlyseRobotprogram extends LinearOpMode {
 
   // block lift mechanism
   private void blockLift(double power) {
-      liftey.setPower(power);
+
+    liftey.setPower(power);
   }
 }
   
