@@ -59,7 +59,7 @@ public class AlyseRobotprogram extends LinearOpMode {
 
         // controller 2 functions
         checkJoysticksG2();        // check joysticks for drive train
-          checkJoysticksG1();        // check joysticks for drive train
+        checkJoysticksG1();        // check joysticks for drive train
 
 
         telemetry.addData("Left Pow", frontLeft.getPower());
@@ -69,6 +69,7 @@ public class AlyseRobotprogram extends LinearOpMode {
       }
     }
   }
+
 
   private void testDriveG2(double speed) {
     if (gamepad2.left_bumper)
@@ -84,121 +85,107 @@ public class AlyseRobotprogram extends LinearOpMode {
   }
 
   private void checkJoysticksG2() {
-  // Strafing code from GM 0
-    if (Math.abs(gamepad2.left_stick_x) >= deadZone)||(Math.abs(gamepad2.left_stick_y) >= deadZone)||(Math.abs(gamepad2.right_stick_x) >= deadZone)
-    double diagonalFactor = 1.0
-    double denominator = Math.max(Math.abs(gamepad2.left_stick_y) + Math.abs(gamepad2.left_stick_x) + Math.abs(gamepad2.right_stick_x), 1);
-    double frontLeftPower = (gamepad2.left_stick_y + gamepad2.left_stick_x * diagonalFactor+ gamepad2.right_stick_x) / denominator;
-    double backLeftPower = (gamepad2.left_stick_y - gamepad2.left_stick_x * diagonalFactor + gamepad2.right_stick_x) / denominator;
-    double frontRightPower = (gamepad2.left_stick_y - gamepad2.left_stick_x * diagonalFactor - gamepad2.right_stick_x) / denominator;
-    double backRightPower = (gamepad2.left_stick_y + gamepad2.left_stick_x * diagonalFactor - gamepad2.right_stick_x) / denominator;
 
 
-      frontLeft.setPower(frontLeftPower);
-      backLeft.setPower(backLeftPower);
-      frontRight.setPower(-frontRightPower);
-      backRight.setPower(-backRightPower);
+      // drive based left stick y-axis
+      if (Math.abs(gamepad2.left_stick_y) >= deadZone)
+        drive(gamepad2.left_stick_y * speed_control);
 
+        // strafe based on left stick x-axis
+      else if (Math.abs(gamepad2.left_stick_x) >= deadZone)
+        strafe(gamepad2.left_stick_x * speed_control);
 
-    // drive based left stick y-axis
-    //if (Math.abs(gamepad2.left_stick_y) >= deadZone)
-    //  drive(gamepad2.left_stick_y * speed_control);
+        // turn based on right stick x-axis
+      else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
+        turn(gamepad2.right_stick_x * speed_control);
 
-      // strafe based on left stick x-axis
-    //else if (Math.abs(gamepad2.left_stick_x) >= deadZone)
-    //  strafe(gamepad2.left_stick_x * speed_control);
+        //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
+        //  diagonalRight(gamepad2.right_stick_x * speed_control);
+        //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
+        //diagonalLeft(gamepad2.right_stick_x * speed_control);
 
-      // turn based on right stick x-axis
-    //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
-    //  turn(gamepad2.right_stick_x * speed_control);
-
-    //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
-    //  diagonalRight(gamepad2.right_stick_x * speed_control);
-    //else if (Math.abs(gamepad2.right_stick_x) >= deadZone)
-    //  diagonalLeft(gamepad2.right_stick_x * speed_control);
-
-     // No stick input
-    else
-      brake();
-  }
-
-  private void checkBumpersG1() {
-    // Right bumper pressed
-    if (gamepad1.right_bumper && !gamepad1.left_bumper) {
-      duckSpinLeft.setPower(0.4);
-      duckSpinRight.setPower(0.4);
+        // No stick input
+      else
+        brake();
     }
 
-    // Left bumper pressed
-    else if (gamepad1.left_bumper && !gamepad1.right_bumper) {
-      duckSpinLeft.setPower(-0.4);
-      duckSpinRight.setPower(-0.4);
+    private void checkBumpersG1 () {
+      // Right bumper pressed
+      if (gamepad1.right_bumper && !gamepad1.left_bumper) {
+        duckSpinLeft.setPower(0.4);
+        duckSpinRight.setPower(0.4);
+      }
+
+      // Left bumper pressed
+      else if (gamepad1.left_bumper && !gamepad1.right_bumper) {
+        duckSpinLeft.setPower(-0.4);
+        duckSpinRight.setPower(-0.4);
+      }
+
+      // No bumper input
+      else {
+        duckSpinRight.setPower(0);
+        duckSpinLeft.setPower(0);
+      }
     }
 
-    // No bumper input
-    else {
-      duckSpinRight.setPower(0);
-      duckSpinLeft.setPower(0);
-    }
-  }
-
-  //trigger to spin servos that grab block or eject block
-  private void checkTriggersG1() {
+    //trigger to spin servos that grab block or eject block
+    private void checkTriggersG1 () {
       if (gamepad1.left_trigger >= deadZone)
-          itemPickup(1);
-      else if (gamepad1.right_trigger  >= deadZone)
-          itemPickup(-1);
+        itemPickup(1);
+      else if (gamepad1.right_trigger >= deadZone)
+        itemPickup(-1);
       else
-          itemPickup(0);
-  }
+        itemPickup(0);
+    }
 
-  //Left Joystick to raise or lower block
-  private void checkJoysticksG1() {
+    //Left Joystick to raise or lower block
+    private void checkJoysticksG1 () {
       if (gamepad1.left_stick_y >= deadZone)
-          liftey.setPower(1);
-      else if (gamepad1.left_stick_y <= -1*deadZone)
-          liftey.setPower(-1);
+        liftey.setPower(1);
+      else if (gamepad1.left_stick_y <= -1 * deadZone)
+        liftey.setPower(-1);
       else
-          liftey.setPower(0);}
+        liftey.setPower(0);
+    }
 
-  private void brake() {
-    frontLeft.setPower(0);
-    backLeft.setPower(0);
-    frontRight.setPower(0);
-    backRight.setPower(0);
-  }
+    private void brake () {
+      frontLeft.setPower(0);
+      backLeft.setPower(0);
+      frontRight.setPower(0);
+      backRight.setPower(0);
+    }
 
-  private void turn(double power) {
-    frontLeft.setPower(power);
-    backLeft.setPower(power);
-    frontRight.setPower(-power);
-    backRight.setPower(-power);
-  }
+    private void turn ( double power){
+      frontLeft.setPower(power);
+      backLeft.setPower(power);
+      frontRight.setPower(-power);
+      backRight.setPower(-power);
+    }
 
-  //strafe the robot
-  private void strafe(double power) {
-    frontLeft.setPower(power);
-    backLeft.setPower(-power);
-    frontRight.setPower(-power);
-    backRight.setPower(power);
-  }
+    //strafe the robot
+    private void strafe ( double power){
+      frontLeft.setPower(power);
+      backLeft.setPower(-power);
+      frontRight.setPower(-power);
+      backRight.setPower(power);
+    }
 
-  // New comment for Alyse
-  //drive robot diagonally Right
-  private void diagonalRight(double power) {
+    //drive robot diagonally Right
+    //private void diagonalRight(double power) {
     //frontLeft.setPower(power);
-    backLeft.setPower(-power);
-    frontRight.setPower(-power);
-    //backRight.setPower(power);
-  }
-
-  //drive robot diagonally left
-  private void diagonalLeft(double power) {
-    frontLeft.setPower(power);
     //backLeft.setPower(-power);
     //frontRight.setPower(-power);
-    backRight.setPower(power);
-  }
+    //backRight.setPower(power);
+ // }
+
+  //drive robot diagonally left
+  //private void diagonalLeft(double power) {
+  //frontLeft.setPower(power);
+  //backLeft.setPower(-power);
+  //frontRight.setPower(-power);
+  //backRight.setPower(power);
+//}
 
   //drive robot forward or backwards
   private void drive(double power) {
@@ -216,8 +203,7 @@ public class AlyseRobotprogram extends LinearOpMode {
 
   // block lift mechanism
   private void blockLift(double power) {
-
-    liftey.setPower(power);
+  liftey.setPower(power);
   }
 }
   
