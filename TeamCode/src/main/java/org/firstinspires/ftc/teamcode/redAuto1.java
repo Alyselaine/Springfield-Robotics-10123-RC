@@ -47,12 +47,20 @@ public class redAuto1 extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             blockLift(1);
-            sleep(300);
+            sleep(1600);
             drive(-1);
-            sleep(450);
+            sleep(400);
             brake();
+            itemPickup(-1);
+            sleep(1500);
+            drive(1);
+            sleep(400);
+            brake();
+            blockLift(-1);
+            sleep(1000);
+            turn(1);
+            sleep(600);
         }
-
     }
 
 

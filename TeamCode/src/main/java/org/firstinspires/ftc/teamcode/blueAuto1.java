@@ -49,7 +49,7 @@ public class blueAuto1 extends LinearOpMode {
             blockLift(1);
             sleep(300);
             drive(-1);
-            sleep(450);
+            sleep(460);
             brake();
         }
 
