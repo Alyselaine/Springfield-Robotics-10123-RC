@@ -49,17 +49,36 @@ public class redAuto1 extends LinearOpMode {
             blockLift(1);
             sleep(1600);
             drive(-1);
-            sleep(400);
+            sleep(370);
             brake();
             itemPickup(-1);
-            sleep(1500);
-            drive(1);
-            sleep(400);
+            sleep(1300);
+            drive(0.9);
+            sleep(350);
             brake();
+            sleep(500);
             blockLift(-1);
-            sleep(1000);
+            sleep(200);
             turn(1);
-            sleep(600);
+            sleep(250);
+            drive(1);
+            sleep(1000);
+            brake();
+            sleep(500);
+            turn(-0.5);
+            sleep(500);
+            drive(0.2);
+            sleep(250);
+            duckSpin2(0.10);
+            sleep(1000);
+            brake();
+            sleep(3000);
+            turn(0.5);
+            sleep(500);
+            drive(-1);
+            sleep(2000);
+            brake();
+
         }
     }
 
@@ -69,6 +88,7 @@ public class redAuto1 extends LinearOpMode {
         backLeft.setPower(0);
         frontRight.setPower(0);
         backRight.setPower(0);
+        liftey.setPower(0);
     }
 
     private void turn ( double power){
@@ -103,6 +123,19 @@ public class redAuto1 extends LinearOpMode {
     // block lift mechanism
     private void blockLift(double power) {
         liftey.setPower(power);
+    }
+
+
+    //duck spin mechanism one side
+     private void duckSpin1(double power) {
+        duckSpinLeft.setPower(0.4);
+        duckSpinRight.setPower(0.4);
+
+    }
+    // duck spin on the other side
+    private void duckSpin2 (double power) {
+        duckSpinLeft.setPower(-0.4);
+        duckSpinRight.setPower(-0.4);
     }
 }
 

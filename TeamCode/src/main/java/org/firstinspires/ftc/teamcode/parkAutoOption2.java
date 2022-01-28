@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
-public class blueAuto1 extends LinearOpMode {
+public class parkAutoOption2 extends LinearOpMode {
     private DcMotor frontRight;
     private DcMotor backRight;
     private DcMotor frontLeft;
@@ -46,38 +46,10 @@ public class blueAuto1 extends LinearOpMode {
 
         waitForStart();
         if (opModeIsActive()) {
-            blockLift(1);
-            sleep(1600);
             drive(-1);
-            sleep(450);
+            sleep(900);
             brake();
-            itemPickup(-1);
-            sleep(1300);
-            drive(0.9);
-            sleep(350);
-            brake();
-            sleep(500);
-            blockLift(-1);
-            sleep(200);
-            turn(-1);
-            sleep(250);
-            drive(1);
-            sleep(1000);
-            brake();
-            sleep(500);
-            turn(0.5);
-            sleep(500);
-            drive(0.2);
-            sleep(250);
-            duckSpin1(0.10);
-            sleep(1000);
-            brake();
-            sleep(3000);
-            turn(-0.5);
-            sleep(500);
-            drive(-1);
-            sleep(2500);
-            brake();
+            sleep(10000);
 
         }
     }
