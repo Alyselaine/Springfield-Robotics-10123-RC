@@ -67,8 +67,8 @@ public class blueAuto1 extends LinearOpMode {
             sleep(500);
             turn(0.5);
             sleep(500);
-            drive(0.2);
-            sleep(250);
+            brake();
+            drive(0.1);
             duckSpin1(0.10);
             sleep(1000);
             brake();
