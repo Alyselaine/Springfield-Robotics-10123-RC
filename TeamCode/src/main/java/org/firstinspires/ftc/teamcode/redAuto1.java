@@ -19,7 +19,7 @@ public class redAuto1 extends LinearOpMode {
     private DcMotor liftey;
     private CRServo pickupLeft;
     private CRServo pickupRight;
-    private RevTouchSensor blockSensor;
+    //private RevTouchSensor blockSensor;
     /**
      * This function is executed when this Op Mode is selected from the Driver Station.
      */
@@ -39,7 +39,7 @@ public class redAuto1 extends LinearOpMode {
         liftey = hardwareMap.get(DcMotor.class, "liftey");
         pickupLeft = hardwareMap.get(CRServo.class, "pickupLeft");
         pickupRight = hardwareMap.get(CRServo.class, "pickupRight");
-        blockSensor = hardwareMap.get(RevTouchSensor.class, "blockSensor");
+        //blockSensor = hardwareMap.get(RevTouchSensor.class, "blockSensor");
 
         // Reverse one of the drive motors.
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -48,20 +48,21 @@ public class redAuto1 extends LinearOpMode {
 
         waitForStart();
         if (opModeIsActive()) {
-            blockLift(1);
-            sleep(1600);
-            drive(-1);
-            sleep(370);
+            blockLift(-1);
+            sleep(2100);
+            drive(-0.9);
+            sleep(385);
             brake();
             itemPickup(-1);
             sleep(1300);
             drive(0.9);
-            sleep(350);
+            sleep(400);
             brake();
             sleep(500);
-            blockLift(-1);
+            blockLift(1);
             sleep(200);
-            turn(1);
+            turn(0.8);
+            //
             sleep(250);
             drive(1);
             sleep(1000);
@@ -70,41 +71,17 @@ public class redAuto1 extends LinearOpMode {
             turn(-0.5);
             sleep(500);
             brake();
-            duckSpin2(0.10);
-            sleep(1500);
+            //
+            drive(0.1);
+            duckSpin2(0.1);
+            sleep(1300);
             brake();
             sleep(3000);
-            turn(0.5);
+            turn(0.4);
             sleep(500);
             drive(-1);
             sleep(2500);
             brake();
-                    //second block pick up
-            //blockLift(-0.5);
-            //sleep(100);
-            //brake();
-            //itemPickup(1);
-            //sleep(3000);
-            //brake();
-            //drive(1);
-            //sleep(1250);
-            //brake();
-            //turn(-1);
-            //sleep(250);
-            //brake();
-            //blockLift(1);
-            //sleep(1850);
-            //drive(-1);
-            //sleep(370);
-            //brake();
-            //itemPickup(-1);
-            //sleep(500);
-            //drive(0.9);
-            //sleep(450);
-            //brake();
-            //sleep(250);
-            //drive(-0.9);
-            //sleep(500);
 
         }
     }
@@ -161,12 +138,9 @@ public class redAuto1 extends LinearOpMode {
     }
     // duck spin on the other side
     private void duckSpin2 (double power) {
-        duckSpinLeft.setPower(-0.2);
-        duckSpinRight.setPower(-0.2);
-    }
-    // block sensor
-    private void blockSensor () {
-        blockSensor.isPressed();
+        duckSpinLeft.setPower(-0.3);
+        duckSpinRight.setPower(-0.3);
+
     }
 }
 

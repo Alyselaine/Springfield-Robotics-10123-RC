@@ -47,14 +47,14 @@ public class blueAuto1 extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             blockLift(1);
-            sleep(1600);
+            sleep(4050);
             drive(-1);
-            sleep(450);
+            sleep(320);
             brake();
             itemPickup(-1);
             sleep(1300);
             drive(0.9);
-            sleep(350);
+            sleep(370);
             brake();
             sleep(500);
             blockLift(-1);
