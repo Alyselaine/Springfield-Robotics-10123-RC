@@ -50,12 +50,11 @@ public class parkAutoOption2 extends LinearOpMode {
             sleep(900);
             brake();
             sleep(10000);
-
         }
     }
 
-
-    private void brake () {
+    // Stop robot
+    private void brake() {
         frontLeft.setPower(0);
         backLeft.setPower(0);
         frontRight.setPower(0);
@@ -63,22 +62,23 @@ public class parkAutoOption2 extends LinearOpMode {
         liftey.setPower(0);
     }
 
-    private void turn ( double power){
+    // Turn robot (>0 is left <0 is right)
+    private void turn(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(power);
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }
 
-    //strafe the robot
-    private void strafe ( double power){
+    // Strafe the robot
+    private void strafe(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(-power);
         frontRight.setPower(-power);
         backRight.setPower(power);
     }
 
-    //drive robot forward or backwards
+    // Drive robot forward or backwards
     private void drive(double power) {
         frontLeft.setPower(-power);
         backLeft.setPower(-power);
@@ -92,20 +92,20 @@ public class parkAutoOption2 extends LinearOpMode {
         pickupLeft.setPower(power);
     }
 
-    // block lift mechanism
+    // Block lift mechanism
     private void blockLift(double power) {
         liftey.setPower(power);
     }
 
-
-    //duck spin mechanism one side
+    // Duck spin mechanism one side
     private void duckSpin1(double power) {
         duckSpinLeft.setPower(0.4);
         duckSpinRight.setPower(0.4);
 
     }
-    // duck spin on the other side
-    private void duckSpin2 (double power) {
+
+    // Duck spin on the other side
+    private void duckSpin2(double power) {
         duckSpinLeft.setPower(-0.4);
         duckSpinRight.setPower(-0.4);
     }

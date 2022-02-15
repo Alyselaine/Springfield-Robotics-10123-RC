@@ -20,6 +20,7 @@ public class redAuto1 extends LinearOpMode {
     private CRServo pickupLeft;
     private CRServo pickupRight;
     //private RevTouchSensor blockSensor;
+
     /**
      * This function is executed when this Op Mode is selected from the Driver Station.
      */
@@ -86,8 +87,8 @@ public class redAuto1 extends LinearOpMode {
         }
     }
 
-
-    private void brake () {
+    // Stop robot
+    private void brake() {
         frontLeft.setPower(0);
         backLeft.setPower(0);
         frontRight.setPower(0);
@@ -95,22 +96,23 @@ public class redAuto1 extends LinearOpMode {
         liftey.setPower(0);
     }
 
-    private void turn ( double power){
+    // Turn robot (>0 is left <0 is right)
+    private void turn(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(power);
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }
 
-    //strafe the robot
-    private void strafe ( double power){
+    // Strafe the robot
+    private void strafe(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(-power);
         frontRight.setPower(-power);
         backRight.setPower(power);
     }
 
-    //drive robot forward or backwards
+    // Drive robot forward or backwards
     private void drive(double power) {
         frontLeft.setPower(-power);
         backLeft.setPower(-power);
@@ -124,23 +126,22 @@ public class redAuto1 extends LinearOpMode {
         pickupLeft.setPower(power);
     }
 
-    // block lift mechanism
+    // Block lift mechanism
     private void blockLift(double power) {
         liftey.setPower(power);
     }
 
-
-    //duck spin mechanism one side
-     private void duckSpin1(double power) {
+    // Duck spin mechanism one side
+    private void duckSpin1(double power) {
         duckSpinLeft.setPower(0.4);
         duckSpinRight.setPower(0.4);
 
     }
-    // duck spin on the other side
-    private void duckSpin2 (double power) {
-        duckSpinLeft.setPower(-0.3);
-        duckSpinRight.setPower(-0.3);
 
+    // Duck spin on the other side
+    private void duckSpin2(double power) {
+        duckSpinLeft.setPower(-0.4);
+        duckSpinRight.setPower(-0.4);
     }
 }
 

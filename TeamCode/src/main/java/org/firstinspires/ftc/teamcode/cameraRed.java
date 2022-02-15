@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import java.util.List;
+
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -17,17 +18,17 @@ import org.firstinspires.ftc.robotcore.external.tfod.TfodCurrentGame;
 
 @Autonomous(name = "cameraRed (Blocks to Java)")
 public class cameraRed extends LinearOpMode {
-        private DcMotor frontRight;
-        private DcMotor backRight;
-        private DcMotor frontLeft;
-        private DcMotor backLeft;
-        private DcMotor duckSpinRight;
-        private DcMotor duckSpinLeft;
-        private DcMotor liftey;
-        private CRServo pickupLeft;
-        private CRServo pickupRight;
-        private VuforiaCurrentGame vuforiaFreightFrenzy;
-        private TfodCurrentGame tfodFreightFrenzy;
+    private DcMotor frontRight;
+    private DcMotor backRight;
+    private DcMotor frontLeft;
+    private DcMotor backLeft;
+    private DcMotor duckSpinRight;
+    private DcMotor duckSpinLeft;
+    private DcMotor liftey;
+    private CRServo pickupLeft;
+    private CRServo pickupRight;
+    private VuforiaCurrentGame vuforiaFreightFrenzy;
+    private TfodCurrentGame tfodFreightFrenzy;
 
     Recognition recognition;
     boolean isDuckDetected;
@@ -78,6 +79,7 @@ public class cameraRed extends LinearOpMode {
                 90, // secondAngle
                 0, // thirdAngle
                 true); // useCompetitionFieldTargetLocations
+
         // Set min confidence threshold to 0.7
         tfodFreightFrenzy.initialize(vuforiaFreightFrenzy, (float) 0.7, true, true);
         // Initialize TFOD before waitForStart.
@@ -151,7 +153,9 @@ public class cameraRed extends LinearOpMode {
             isDuckDetected = false;
         }
     }
-    private void brake () {
+
+    // Stop robot
+    private void brake() {
         frontLeft.setPower(0);
         backLeft.setPower(0);
         frontRight.setPower(0);
@@ -159,22 +163,23 @@ public class cameraRed extends LinearOpMode {
         liftey.setPower(0);
     }
 
-    private void turn ( double power){
+    // Turn robot (>0 is left <0 is right)
+    private void turn(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(power);
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }
 
-    //strafe the robot
-    private void strafe ( double power){
+    // Strafe the robot
+    private void strafe(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(-power);
         frontRight.setPower(-power);
         backRight.setPower(power);
     }
 
-    //drive robot forward or backwards
+    // Drive robot forward or backwards
     private void drive(double power) {
         frontLeft.setPower(-power);
         backLeft.setPower(-power);
@@ -188,23 +193,22 @@ public class cameraRed extends LinearOpMode {
         pickupLeft.setPower(power);
     }
 
-    // block lift mechanism
+    // Block lift mechanism
     private void blockLift(double power) {
         liftey.setPower(power);
     }
 
-
-    //duck spin mechanism one side
+    // Duck spin mechanism one side
     private void duckSpin1(double power) {
         duckSpinLeft.setPower(0.4);
         duckSpinRight.setPower(0.4);
 
     }
-    // duck spin on the other side
-    private void duckSpin2 (double power) {
+
+    // Duck spin on the other side
+    private void duckSpin2(double power) {
         duckSpinLeft.setPower(-0.3);
         duckSpinRight.setPower(-0.3);
-
     }
     // camera functions
 }

@@ -78,12 +78,11 @@ public class blueAuto1 extends LinearOpMode {
             drive(-1);
             sleep(2500);
             brake();
-
         }
     }
 
 
-    private void brake () {
+    private void brake() {
         frontLeft.setPower(0);
         backLeft.setPower(0);
         frontRight.setPower(0);
@@ -91,7 +90,7 @@ public class blueAuto1 extends LinearOpMode {
         liftey.setPower(0);
     }
 
-    private void turn ( double power){
+    private void turn(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(power);
         frontRight.setPower(-power);
@@ -99,7 +98,7 @@ public class blueAuto1 extends LinearOpMode {
     }
 
     //strafe the robot
-    private void strafe ( double power){
+    private void strafe(double power) {
         frontLeft.setPower(power);
         backLeft.setPower(-power);
         frontRight.setPower(-power);
@@ -132,8 +131,9 @@ public class blueAuto1 extends LinearOpMode {
         duckSpinRight.setPower(0.4);
 
     }
+
     // duck spin on the other side
-    private void duckSpin2 (double power) {
+    private void duckSpin2(double power) {
         duckSpinLeft.setPower(-0.4);
         duckSpinRight.setPower(-0.4);
     }
