@@ -47,24 +47,24 @@ public class blueAutoWait extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             brake();
-            sleep(5000);
+            sleep(5500);
             blockLift(1);
-            sleep(1600);
+            sleep(4050);
             drive(-1);
             sleep(450);
             brake();
             itemPickup(-1);
             sleep(1300);
-            drive(0.9);
-            sleep(350);
+            blockLift(-1);
+            sleep(2000);
+            drive(0.8);
+            sleep(1100);
             brake();
             sleep(500);
-            blockLift(-1);
-            sleep(200);
             turn(-1);
-            sleep(250);
-            drive(1);
-            sleep(1000);
+            sleep(350);
+            drive(0.8);
+            sleep(1500);
             brake();
             sleep(500);
             turn(0.5);
@@ -72,13 +72,13 @@ public class blueAutoWait extends LinearOpMode {
             brake();
             drive(0.1);
             duckSpin1(0.10);
-            sleep(1000);
+            sleep(2500);
             brake();
             sleep(3000);
-            turn(-0.5);
-            sleep(500);
+            turn(-0.9);
+            sleep(400);
             drive(-1);
-            sleep(2500);
+            sleep(3000);
             brake();
         }
     }

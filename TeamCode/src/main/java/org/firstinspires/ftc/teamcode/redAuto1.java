@@ -63,7 +63,6 @@ public class redAuto1 extends LinearOpMode {
             blockLift(1);
             sleep(200);
             turn(0.8);
-            //
             sleep(250);
             drive(1);
             sleep(1000);
@@ -72,7 +71,6 @@ public class redAuto1 extends LinearOpMode {
             turn(-0.5);
             sleep(500);
             brake();
-            //
             drive(0.1);
             duckSpin2(0.1);
             sleep(1300);
@@ -133,15 +131,15 @@ public class redAuto1 extends LinearOpMode {
 
     // Duck spin mechanism one side
     private void duckSpin1(double power) {
-        duckSpinLeft.setPower(0.4);
-        duckSpinRight.setPower(0.4);
+        duckSpinLeft.setPower(0.3);
+        duckSpinRight.setPower(0.3);
 
     }
 
     // Duck spin on the other side
     private void duckSpin2(double power) {
-        duckSpinLeft.setPower(-0.4);
-        duckSpinRight.setPower(-0.4);
+        duckSpinLeft.setPower(-0.3);
+        duckSpinRight.setPower(-0.3);
     }
 }
 

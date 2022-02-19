@@ -47,39 +47,40 @@ public class redAutoWait extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             brake();
-            sleep(5000);
-            blockLift(1);
-            sleep(1600);
-            drive(-1);
-            sleep(370);
+            sleep(5500);
+            blockLift(-1);
+            sleep(2100);
+            drive(-0.9);
+            sleep(385);
             brake();
             itemPickup(-1);
             sleep(1300);
             drive(0.9);
-            sleep(350);
+            sleep(400);
             brake();
             sleep(500);
-            blockLift(-1);
+            blockLift(1);
             sleep(200);
-            turn(1);
+            turn(0.8);
             sleep(250);
             drive(1);
-            sleep(970);
+            sleep(1000);
             brake();
             sleep(500);
             turn(-0.5);
             sleep(500);
             brake();
             drive(0.1);
-            duckSpin2(0.10);
-            sleep(1000);
+            duckSpin2(0.1);
+            sleep(1300);
             brake();
             sleep(3000);
-            turn(0.5);
+            turn(0.4);
             sleep(500);
             drive(-1);
             sleep(2500);
             brake();
+
 
         }
     }

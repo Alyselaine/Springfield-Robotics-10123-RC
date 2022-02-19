@@ -95,6 +95,23 @@ public class cameraRed extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             // Put run blocks here.
+           drive(-1);
+           sleep(150);
+           brake();
+           strafe(-1);
+           sleep(700);
+           brake();
+           drive(1);
+           sleep(30);
+           //duckSpin1(0.4);
+           //sleep(500);
+           //brake();
+           //drive(-1);
+           //sleep(50);
+
+
+
+
             while (opModeIsActive()) {
                 // Put loop blocks here.
                 // Get a list of recognitions from TFOD.
@@ -103,10 +120,7 @@ public class cameraRed extends LinearOpMode {
                 // through list and display info for each recognition.
                 if (recognitions.size() == 0) {
                     telemetry.addData("TFOD", "No items detected.");
-                    sleep(2000);
-                    drive(1);
-                    sleep(1000);
-                    brake();
+
                 } else {
                     index = 0;
                     isDuckDetected = false;

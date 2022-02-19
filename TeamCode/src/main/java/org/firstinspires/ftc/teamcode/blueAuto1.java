@@ -49,20 +49,20 @@ public class blueAuto1 extends LinearOpMode {
             blockLift(1);
             sleep(4050);
             drive(-1);
-            sleep(320);
+            sleep(450);
             brake();
             itemPickup(-1);
             sleep(1300);
-            drive(0.9);
-            sleep(370);
+            blockLift(-1);
+            sleep(2000);
+            drive(0.8);
+            sleep(1100);
             brake();
             sleep(500);
-            blockLift(-1);
-            sleep(200);
             turn(-1);
-            sleep(250);
-            drive(1);
-            sleep(1000);
+            sleep(350);
+            drive(0.8);
+            sleep(1500);
             brake();
             sleep(500);
             turn(0.5);
@@ -70,13 +70,13 @@ public class blueAuto1 extends LinearOpMode {
             brake();
             drive(0.1);
             duckSpin1(0.10);
-            sleep(1000);
+            sleep(2500);
             brake();
             sleep(3000);
-            turn(-0.5);
-            sleep(500);
+            turn(-0.9);
+            sleep(400);
             drive(-1);
-            sleep(2500);
+            sleep(3000);
             brake();
         }
     }
@@ -127,15 +127,15 @@ public class blueAuto1 extends LinearOpMode {
 
     //duck spin mechanism one side
     private void duckSpin1(double power) {
-        duckSpinLeft.setPower(0.4);
-        duckSpinRight.setPower(0.4);
+        duckSpinLeft.setPower(0.3);
+        duckSpinRight.setPower(0.3);
 
     }
 
     // duck spin on the other side
     private void duckSpin2(double power) {
-        duckSpinLeft.setPower(-0.4);
-        duckSpinRight.setPower(-0.4);
+        duckSpinLeft.setPower(-0.3);
+        duckSpinRight.setPower(-0.3);
     }
 }
 
