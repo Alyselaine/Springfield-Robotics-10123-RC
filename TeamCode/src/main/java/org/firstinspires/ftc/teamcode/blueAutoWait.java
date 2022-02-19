@@ -55,10 +55,10 @@ public class blueAutoWait extends LinearOpMode {
             brake();
             itemPickup(-1);
             sleep(1300);
-            blockLift(-1);
-            sleep(2000);
             drive(0.8);
             sleep(1100);
+            blockLift(-1);
+            sleep(2000);
             brake();
             sleep(500);
             turn(-1);

@@ -68,7 +68,7 @@ public class redAutoWait extends LinearOpMode {
             brake();
             sleep(500);
             turn(-0.5);
-            sleep(500);
+            sleep(400);
             brake();
             drive(0.1);
             duckSpin2(0.1);
@@ -131,15 +131,15 @@ public class redAutoWait extends LinearOpMode {
 
     // Duck spin mechanism one side
     private void duckSpin1(double power) {
-        duckSpinLeft.setPower(0.4);
-        duckSpinRight.setPower(0.4);
+        duckSpinLeft.setPower(0.3);
+        duckSpinRight.setPower(0.3);
 
     }
 
     // Duck spin on the other side
     private void duckSpin2(double power) {
-        duckSpinLeft.setPower(-0.4);
-        duckSpinRight.setPower(-0.4);
+        duckSpinLeft.setPower(-0.3);
+        duckSpinRight.setPower(-0.3);
     }
 }
 
