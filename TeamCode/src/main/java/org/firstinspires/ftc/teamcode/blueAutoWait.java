@@ -47,38 +47,42 @@ public class blueAutoWait extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             brake();
-            sleep(5500);
             blockLift(1);
             sleep(4050);
             drive(-1);
-            sleep(450);
+            sleep(570);
             brake();
             itemPickup(-1);
             sleep(1300);
-            drive(0.8);
-            sleep(1100);
+            drive(0.65);
+            sleep(600);
             blockLift(-1);
+            itemPickup(0);
             sleep(2000);
             brake();
             sleep(500);
             turn(-1);
             sleep(350);
             drive(0.8);
-            sleep(1500);
+            sleep(2200);
             brake();
             sleep(500);
             turn(0.5);
-            sleep(500);
+            sleep(370);
             brake();
             drive(0.1);
-            duckSpin1(0.10);
+            duckSpin1(0.30);
             sleep(2500);
+            duckSpin1(0);
             brake();
-            sleep(3000);
-            turn(-0.9);
+            sleep(1000);
+            drive(-0.4);
+            sleep(200);
+            turn(-0.7);
             sleep(400);
+            brake();
             drive(-1);
-            sleep(3000);
+            sleep(2700);
             brake();
         }
     }
@@ -109,8 +113,14 @@ public class blueAutoWait extends LinearOpMode {
 
     //drive robot forward or backwards
     private void drive(double power) {
-        frontLeft.setPower(-power);
-        backLeft.setPower(-power);
+        if (power < 0) {
+            frontLeft.setPower(-power * 0.95);
+            backLeft.setPower(-power * 0.95);
+        }
+        else{
+            frontLeft.setPower(-power);
+            backLeft.setPower(-power);
+        }
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }
@@ -129,15 +139,14 @@ public class blueAutoWait extends LinearOpMode {
 
     //duck spin mechanism one side
     private void duckSpin1(double power) {
-        duckSpinLeft.setPower(0.4);
-        duckSpinRight.setPower(0.4);
-
+        duckSpinLeft.setPower(0.3);
+        duckSpinRight.setPower(0.3);
     }
 
     // duck spin on the other side
     private void duckSpin2(double power) {
-        duckSpinLeft.setPower(-0.4);
-        duckSpinRight.setPower(-0.4);
+        duckSpinLeft.setPower(-0.3);
+        duckSpinRight.setPower(-0.3);
     }
 }
 

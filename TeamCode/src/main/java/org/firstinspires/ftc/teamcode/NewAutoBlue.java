@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -8,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
-public class redPark1 extends LinearOpMode {
+public class NewAutoBlue extends LinearOpMode {
     private DcMotor frontRight;
     private DcMotor backRight;
     private DcMotor frontLeft;
@@ -18,6 +19,7 @@ public class redPark1 extends LinearOpMode {
     private DcMotor liftey;
     private CRServo pickupLeft;
     private CRServo pickupRight;
+    //private RevTouchSensor blockSensor;
 
     /**
      * This function is executed when this Op Mode is selected from the Driver Station.
@@ -38,6 +40,7 @@ public class redPark1 extends LinearOpMode {
         liftey = hardwareMap.get(DcMotor.class, "liftey");
         pickupLeft = hardwareMap.get(CRServo.class, "pickupLeft");
         pickupRight = hardwareMap.get(CRServo.class, "pickupRight");
+        //blockSensor = hardwareMap.get(RevTouchSensor.class, "blockSensor");
 
         // Reverse one of the drive motors.
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -46,39 +49,23 @@ public class redPark1 extends LinearOpMode {
 
         waitForStart();
         if (opModeIsActive()) {
-            blockLift(1);
-            sleep(1600);
-            drive(-1);
-            sleep(370);
+            blockLift(-1);
+            sleep(2100);
+            drive(-0.9);
+            sleep(385);
             brake();
             itemPickup(-1);
             sleep(1300);
             drive(0.9);
-            sleep(350);
+            sleep(400);
             brake();
             sleep(500);
-            blockLift(-1);
+            blockLift(1);
             sleep(200);
-            turn(1);
+            turn(0.8);
             sleep(250);
-            drive(-1);
-            sleep(1500);
-            brake();
-            //sleep(500);
-            //turn(-0.5);
-            //sleep(500);
-            //brake();
-            //drive(0.1);
-            //duckSpin2(0.10);
-            //sleep(1000);
-            //brake();
-            //sleep(3000);
-            //turn(0.5);
-            //sleep(500);
-            //drive(-1);
-            //sleep(2500);
-            //brake();
-
+            drive(-9);
+            sleep(1800);
         }
     }
 
@@ -109,8 +96,14 @@ public class redPark1 extends LinearOpMode {
 
     // Drive robot forward or backwards
     private void drive(double power) {
-        frontLeft.setPower(-power);
-        backLeft.setPower(-power);
+        if (power > 0) {
+            frontLeft.setPower(-power * 0.95);
+            backLeft.setPower(-power * 0.95);
+        }
+        else{
+            frontLeft.setPower(-power);
+            backLeft.setPower(-power);
+        }
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }
@@ -128,8 +121,8 @@ public class redPark1 extends LinearOpMode {
 
     // Duck spin mechanism one side
     private void duckSpin1(double power) {
-        duckSpinLeft.setPower(0.4);
-        duckSpinRight.setPower(0.4);
+        duckSpinLeft.setPower(0.3);
+        duckSpinRight.setPower(0.3);
 
     }
 
@@ -139,7 +132,5 @@ public class redPark1 extends LinearOpMode {
         duckSpinRight.setPower(-0.3);
     }
 }
-
-
 
 

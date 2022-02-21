@@ -27,7 +27,6 @@ public class AlyseRobotprogram extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-
         // Drive Motors
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
@@ -44,7 +43,6 @@ public class AlyseRobotprogram extends LinearOpMode {
         // Reverse one of the drive motors.
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-
 
         waitForStart();
         if (opModeIsActive()) {
@@ -113,14 +111,14 @@ public class AlyseRobotprogram extends LinearOpMode {
     private void checkBumpersG1() {
         // Right bumper pressed
         if (gamepad1.right_bumper && !gamepad1.left_bumper) {
-            duckSpinLeft.setPower(0.4);
-            duckSpinRight.setPower(0.4);
+            duckSpinLeft.setPower(0.3);
+            duckSpinRight.setPower(0.3);
         }
 
         // Left bumper pressed
         else if (gamepad1.left_bumper && !gamepad1.right_bumper) {
-            duckSpinLeft.setPower(-0.4);
-            duckSpinRight.setPower(-0.4);
+            duckSpinLeft.setPower(-0.3);
+            duckSpinRight.setPower(-0.3);
         }
 
         // No bumper input
@@ -190,8 +188,14 @@ public class AlyseRobotprogram extends LinearOpMode {
 
     //drive robot forward or backwards
     private void drive(double power) {
-        frontLeft.setPower(-power);
-        backLeft.setPower(-power);
+        if (power > 0) {
+            frontLeft.setPower(-power * 0.95);
+            backLeft.setPower(-power * 0.95);
+        }
+        else{
+            frontLeft.setPower(-power);
+            backLeft.setPower(-power);
+        }
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }

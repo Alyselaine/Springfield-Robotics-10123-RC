@@ -79,7 +79,7 @@ public class redAuto1 extends LinearOpMode {
             turn(0.4);
             sleep(500);
             drive(-1);
-            sleep(2500);
+            sleep(3000);
             brake();
 
         }
@@ -112,8 +112,14 @@ public class redAuto1 extends LinearOpMode {
 
     // Drive robot forward or backwards
     private void drive(double power) {
-        frontLeft.setPower(-power);
-        backLeft.setPower(-power);
+        if (power > 0) {
+            frontLeft.setPower(-power * 0.95);
+            backLeft.setPower(-power * 0.95);
+        }
+        else{
+            frontLeft.setPower(-power);
+            backLeft.setPower(-power);
+        }
         frontRight.setPower(-power);
         backRight.setPower(-power);
     }
